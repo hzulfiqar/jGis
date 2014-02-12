@@ -7,22 +7,37 @@ html
         link(rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css")
         script(type='text/javascript', src='/javascripts/jgis.js')
         script.
+            // TODO: SB find a better way of listening to onReady...
+            jGis.ready = function() {
+                if(jGis.getGis3DWidget()) {
+                    jGis.getGis3DWidget().addLayer("Gelände", "/x3d/Palatin_Gelaende.x3d");
+                    jGis.getGis3DWidget().addLayer("Nicht datiert", "/x3d/Palatin_nicht_datiert.x3d");
+                    jGis.getGis3DWidget().addLayer("Frühe Kaiserzeit", "/x3d/Palatin_Phase02_fruehe_Kaiserzeit.x3d");
+                    jGis.getGis3DWidget().addLayer("Flavisch 2", "/x3d/Palatin_Phase04_Flavisch2.x3d");
+                    jGis.getGis3DWidget().addLayer("Flavisch 3", "/x3d/Palatin_Phase05_Flavisch3.x3d");
+                    jGis.getGis3DWidget().addLayer("Phase 7", "/x3d/Palatin_Phase07_Anfang2Jh.x3d");
+                }
+            }
+
             $(function() {
                 $("#nav_mode").buttonset();
                 $("button").button().click(function( event ) {
                     event.preventDefault();
-                    if(gis3DCanvases && gis3DCanvases.length > 0) {
-                         gis3DCanvases[0].showAll();
+                    if(jGis.getGis3DWidget) {
+                         jGis.getGis3DWidget().showAll();
                     }
                 });
+
             });
 
             function setNavigationMode(navigationMode) {
-                 if(gis3DCanvases && gis3DCanvases.length > 0) {
+                 if(jGis.getGis3DWidget) {
                     // set the navigation mode on the first gis3d canvas!
-                     gis3DCanvases[0].setNavigationMode(navigationMode);
+                     jGis.getGis3DWidget().setNavigationMode(navigationMode);
                  }
              }
+
+
     body
     block content
         h1 Welcome to #{title}

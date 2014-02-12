@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/public/javascripts/jgis.js" line="158" mnemonic="7" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="505f231c-bf1b-4def-88da-9192bbf56262" name="Default" comment="" />
     <ignored path="jGis.iws" />
@@ -23,20 +26,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
+      <file leaf-file-name="jgis.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/jgis.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="19" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+            <state line="167" column="34" selection-start="4232" selection-end="4232" vertical-scroll-proportion="0.8649262" vertical-offset="2077" max-vertical-offset="2958">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <file leaf-file-name="x3dom-full.debug.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/x3dom/x3dom-full.debug.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-              <folding />
+            <state line="7212" column="24" selection-start="248659" selection-end="248659" vertical-scroll-proportion="-10.32" vertical-offset="122346" max-vertical-offset="776526">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,61 +49,7 @@
       <file leaf-file-name="index.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="41" selection-start="1155" selection-end="1155" vertical-scroll-proportion="-19.72" vertical-offset="0" max-vertical-offset="1003">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jgis.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/jgis.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="12" selection-start="2046" selection-end="2046" vertical-scroll-proportion="1.0233517" vertical-offset="292" max-vertical-offset="1581">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="8" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="221">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Historical_Building.x3d" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/x3d/Historical_Building.x3d">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="8" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2754">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.jade" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/layout.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="6" selection-start="102" selection-end="106" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="204">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="289">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery-1.11.0.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/jquery-1.11.0.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2712" column="7" selection-start="73988" selection-end="73992" vertical-scroll-proportion="15.12" vertical-offset="46278" max-vertical-offset="175627">
+            <state line="20" column="0" selection-start="1199" selection-end="1199" vertical-scroll-proportion="-13.6" vertical-offset="0" max-vertical-offset="1258">
               <folding />
             </state>
           </provider>
@@ -117,9 +68,19 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/jgis.js" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_Phase13_Modern.x3d" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_Phase11_Maxentianisch.x3d" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_Phase10_Zwischenphase.x3d" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_Phase09_Severisch.x3d" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_Phase07_Anfang2Jh.x3d" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_Phase05_Flavisch3.x3d" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_Phase04_Flavisch2.x3d" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_Phase02_fruehe_Kaiserzeit.x3d" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_nicht_datiert.x3d" />
+        <option value="$PROJECT_DIR$/public/x3d/Palatin_Gelaende.x3d" />
         <option value="$PROJECT_DIR$/public/x3d/Historical_Building.x3d" />
-        <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/public/javascripts/jgis.js" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
       </list>
     </option>
   </component>
@@ -221,6 +182,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="x3dom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jGis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jGis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="x3d" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -358,22 +337,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16324382" sideWeight="0.87931037" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291866" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.49952152" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2085308" sideWeight="0.8103638" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16324382" sideWeight="0.1193634" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2085308" sideWeight="0.18963616" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2784689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13205741" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -535,27 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="8" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Gelaende.x3d">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="740">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/x3d/Historical_Building.x3d">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="8" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3564">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="6" selection-start="102" selection-end="106" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="204">
@@ -577,9 +535,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.jade">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="41" selection-start="1155" selection-end="1155" vertical-scroll-proportion="-19.72" vertical-offset="0" max-vertical-offset="1003">
+        <state line="27" column="19" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="8" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Phase13_Modern.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="338" selection-end="404" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="9265">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Phase11_Maxentianisch.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="404" selection-end="404" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="35445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Phase10_Zwischenphase.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="404" selection-end="404" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="4505">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Phase09_Severisch.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="404" selection-end="404" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="59415">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Phase07_Anfang2Jh.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="404" selection-end="404" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="33235">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Phase05_Flavisch3.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="404" selection-end="404" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="8245">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Phase04_Flavisch2.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="404" selection-end="404" vertical-scroll-proportion="0.09855072" vertical-offset="0" max-vertical-offset="42279">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Phase02_fruehe_Kaiserzeit.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="404" selection-end="404" vertical-scroll-proportion="0.09798271" vertical-offset="0" max-vertical-offset="12155">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_nicht_datiert.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="404" selection-end="404" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="32045">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Palatin_Gelaende.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="72" selection-start="404" selection-end="404" vertical-scroll-proportion="0.09798271" vertical-offset="0" max-vertical-offset="694">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/x3d/Historical_Building.x3d">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="74" selection-start="276" selection-end="276" vertical-scroll-proportion="0.07348703" vertical-offset="0" max-vertical-offset="2754">
           <folding />
         </state>
       </provider>
@@ -591,16 +633,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/public/x3dom/x3dom-full.debug.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="19" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+        <state line="7212" column="24" selection-start="248659" selection-end="248659" vertical-scroll-proportion="-10.32" vertical-offset="122346" max-vertical-offset="776526">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="1199" selection-end="1199" vertical-scroll-proportion="-13.6" vertical-offset="0" max-vertical-offset="1258">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/jgis.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="12" selection-start="2046" selection-end="2046" vertical-scroll-proportion="1.0233517" vertical-offset="292" max-vertical-offset="1581">
+        <state line="167" column="34" selection-start="4232" selection-end="4232" vertical-scroll-proportion="0.8649262" vertical-offset="2077" max-vertical-offset="2958">
           <folding />
         </state>
       </provider>

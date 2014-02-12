@@ -12,6 +12,38 @@
 // TODO: global error handling (Browser-Events)
 
 
+function Gis3D (gis3dElm, x3dElm, sceneElm) {
+    this.gis3dElm = gis3dElm;
+    this.x3dElem = x3dElm;
+    this.sceneElm = sceneElm;
+}
+
+Gis3D.prototype.getX3DElm = function() {
+    return this.x3dElem;
+};
+
+Gis3D.prototype.setNavigationMode = function(navigationMode) {
+    switch(navigationMode){
+        case "examine" :   this.x3dElem.runtime.examine(); break;
+        case "walk" :      this.x3dElem.runtime.walk(); break;
+        case "lookAt" :    this.x3dElem.runtime.lookAt(); break;
+        case "fly" :       this.x3dElem.runtime.fly(); break;
+        case "helicopter": this.x3dElem.runtime.helicopter(); break;
+        case "game" :      this.x3dElem.runtime.game(); break;
+        case "lookAround": this.x3dElem.runtime.lookAround(); break;
+    }
+};
+
+Gis3D.prototype.showAll = function() {
+  this.x3dElem.runtime.showAll();
+  this.x3dElem.runtime.resetView();
+};
+
+
+// TODO: method definitions of the Gis3D class!
+
+var gis3DCanvases = new Array();
+
 
 $(document).ready(function () {
     $('<div class="giswidget"></div>').replaceAll("gis3d")
@@ -22,10 +54,11 @@ $(document).ready(function () {
             gis3dElm.innerHTML = '<x3d width="800px" height="600px"><scene></scene></x3d>';
 
             var x3dElm = $(gis3dElm).find("x3d").get(0);
-            var sceneElem = $(gis3dElm).find("x3d > scene");
+            var sceneElem = $(gis3dElm).find("x3d > scene").get(0);
+            var gis3D = new Gis3D(gis3dElm, x3dElm, sceneElem);
+            gis3DCanvases[i] = gis3D;
 
             // load some x3d data from the server
-            $(gis3dElm).find("x3d > scene").append('<inline id="inline_element" url="/x3d/Palatin_Gelaende.x3d"></inline>');
             $(gis3dElm).find("x3d > scene").append('<transform><inline id="inline_element" url="/x3d/Historical_Building.x3d"></inline></transform>');
         }
     }

@@ -5,9 +5,10 @@ html
         script(type='text/javascript', src='/javascripts/jquery-1.11.0.js')
         script(type='text/javascript', src="//code.jquery.com/ui/1.10.4/jquery-ui.js")
         link(rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css")
+        link(rel="stylesheet" href="/stylesheets/jgis.css")
         script(type='text/javascript', src='/javascripts/jgis.js')
         script.
-            // TODO: SB find a better way of listening to onReady...
+            // TODO: SB find a better way of listening to readiness of jGis...
             jGis.ready = function() {
                 if(jGis.getGis3DWidget()) {
                     jGis.getGis3DWidget().addLayer("Gelände", "/x3d/Palatin_Gelaende.x3d");
@@ -16,6 +17,8 @@ html
                     jGis.getGis3DWidget().addLayer("Flavisch 2", "/x3d/Palatin_Phase04_Flavisch2.x3d");
                     jGis.getGis3DWidget().addLayer("Flavisch 3", "/x3d/Palatin_Phase05_Flavisch3.x3d");
                     jGis.getGis3DWidget().addLayer("Phase 7", "/x3d/Palatin_Phase07_Anfang2Jh.x3d");
+
+                    jGis.getGis3DWidget().showLayerWidget();
                 }
             }
 
@@ -36,6 +39,13 @@ html
                      jGis.getGis3DWidget().setNavigationMode(navigationMode);
                  }
              }
+        style.
+            #toolbar_widget {
+                padding: 4px;
+                width: 800px;
+                margin: 10px;
+                float: left;
+            }
 
 
     body
@@ -43,10 +53,9 @@ html
         h1 Welcome to #{title}
 
         // TODO: use a jquery ui toolbar!
-        div#left_navigation_bar(style="float: left")
+        div#toolbar_widget(class="ui-widget-header ui-corner-all")
             button Show All
-        form
-            div#nav_mode
+            span#nav_mode
                 input(type="radio" name="nav_mode" id="examine" onclick='setNavigationMode("examine")' checked="checked")
                 label(for="examine") Examine
                 input(type="radio" name="nav_mode" id="fly" onclick='setNavigationMode("fly")')
@@ -61,8 +70,6 @@ html
                 label(for="lookAround") LookAround
                 input(type="radio" name="nav_mode" id="walk" onclick='setNavigationMode("walk")')
                 label(for="walk") Walk
-
-
 
         gis3d
 

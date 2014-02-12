@@ -10,8 +10,10 @@
 // permission from the owner.
 
 // TODO: global error handling (Browser-Events)
-// TODO: toolbar widget
-// TODO: layer widget
+// TODO: toolbar widget implementation so that it can be displayed within the div of each gis3dwidget
+// TODO: layer widget the same as for toolbar widget
+// TODO: show and hide layers!
+// TODO: There are dependencies to jQuery and jQueryUI. How to handle this?
 
 
 
@@ -33,9 +35,9 @@ var jGis = {
     },
 
     init: function() {
-        $('<div class="giswidget"></div>').replaceAll("gis3d");
+        $('<div class="gis3d_widget"></div>').replaceAll("gis3d");
 
-        var gis3dElms = $(".giswidget").get();
+        var gis3dElms = $(".gis3d_widget").get();
         if(gis3dElms && gis3dElms.length > 0) {
             for(var i=0; i<gis3dElms.length; i++) {
                 var gis3dElm = gis3dElms[i];
@@ -43,7 +45,8 @@ var jGis = {
 
                 var x3dElm = $(gis3dElm).find("x3d").get(0);
                 var sceneElem = $(gis3dElm).find("x3d > scene").get(0);
-                var gis3DWidget = new Gis3DWidget(gis3dElm, x3dElm, sceneElem);
+                var id = "gis3d_widget_" + i;
+                var gis3DWidget = new Gis3DWidget(id, gis3dElm, x3dElm, sceneElem);
                 this.addGis3DWidget(gis3DWidget);
             }
         }
@@ -89,10 +92,13 @@ var jGis = {
  * @param sceneElm
  * @constructor
  */
-function Gis3DWidget (gis3dElm, x3dElm, sceneElm) {
+function Gis3DWidget (id, gis3dElm, x3dElm, sceneElm) {
+    this.id = id;
     this.gis3dElm = gis3dElm;
     this.x3dElem = x3dElm;
     this.sceneElm = sceneElm;
+
+    this.layerWidgetElm = null;
 
     this.layers =  new Array();
 }
@@ -123,12 +129,37 @@ Gis3DWidget.prototype.getLayers = function() {
 };
 
 Gis3DWidget.prototype.addLayer = function(name, uri) {
-    var layer = new Gis3DLayer(name, uri);
     var index = this.layers.length;
-    var id = index + '_' + name;
+    var id = this.id + '_layer_' + index;
+    var layer = new Gis3DLayer(id, name, uri);
 
     this.layers[index] = layer;
     $(this.sceneElm).append('<transform><inline id="'+id+'" url="'+uri+'"></inline></transform>');
+};
+
+Gis3DWidget.prototype.showLayerWidget = function() {
+    if(!this.layerWidgetElm) {
+        $(this.gis3dElm).append('<div class="gis3d_layer_widget"></div>');
+        this.layerWidgetElm = $(this.gis3dElm).find(".gis3d_layer_widget").get(0);
+    }
+
+    if(this.layerWidgetElm) {
+        // remove all children
+        $(this.layerWidgetElm).empty();
+        // add children
+        $(this.layerWidgetElm).append('Layers: ');
+        for(var ind=0; ind<this.layers.length; ind++) {
+            var layer = this.layers[ind];
+            var id = 'layer_checkbox_'+layer.getId();
+
+            // TODO: it has to be checked whether the layer is currently visible or not!
+            $(this.layerWidgetElm).append('<br><input type="checkbox" id="'+id+'" checked="checked"><label for="'+id+'">'+layer.getName()+'</label>');
+        }
+
+        //$(this.layerWidgetElm).find("input").button();
+
+        $(this.layerWidgetElm).show();
+    }
 };
 
 
@@ -139,9 +170,14 @@ Gis3DWidget.prototype.addLayer = function(name, uri) {
  * @param uri
  * @constructor
  */
-function Gis3DLayer(name, uri) {
+function Gis3DLayer(id, name, uri) {
+    this.id = id;
     this.name = name;
     this.uri = uri;
+}
+
+Gis3DLayer.prototype.getId = function() {
+    return this.id;
 }
 
 Gis3DLayer.prototype.getName = function() {

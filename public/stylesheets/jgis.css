@@ -17,3 +17,10 @@ a {
     overflow: hidden;
     border: 10px solid #ffffff;
 }
+
+.gis3d_navLayer_widget {
+    padding: 4px;
+    margin-bottom: 10px;
+    float: left;
+
+}

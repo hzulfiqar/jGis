@@ -99,8 +99,10 @@ function Gis3DWidget (id, gis3dElm, x3dElm, sceneElm) {
     this.sceneElm = sceneElm;
 
     this.layerWidgetElm = null;
+    this.navLayerWidgetElm = null;
 
     this.layers =  new Array();
+    this.navigationLayer = new Array();
 }
 
 Gis3DWidget.prototype.getX3DElm = function() {
@@ -109,6 +111,7 @@ Gis3DWidget.prototype.getX3DElm = function() {
 
 Gis3DWidget.prototype.setNavigationMode = function(navigationMode) {
     switch(navigationMode){
+        case "showAll" :   this.showAll(); break;
         case "examine" :   this.x3dElem.runtime.examine(); break;
         case "walk" :      this.x3dElem.runtime.walk(); break;
         case "lookAt" :    this.x3dElem.runtime.lookAt(); break;
@@ -128,6 +131,10 @@ Gis3DWidget.prototype.getLayers = function() {
     return this.layers;
 };
 
+Gis3DWidget.prototype.getNavigationLayers = function() {
+    return this.navigationLayer;
+};
+
 Gis3DWidget.prototype.addLayer = function(name, uri) {
     var index = this.layers.length;
     var id = this.id + '_layer_' + index;
@@ -135,6 +142,16 @@ Gis3DWidget.prototype.addLayer = function(name, uri) {
 
     this.layers[index] = layer;
     $(this.sceneElm).append('<transform><inline id="'+id+'" url="'+uri+'"></inline></transform>');
+};
+
+Gis3DWidget.prototype.addNavigationLayer = function(name, elemid) {
+    var index = this.navigationLayer.length;
+    var elementId = elemid;
+    //var id = this.id + '_NavigationLayer_' + index;
+    var navlayer = new Gis3DNavLayer(name, elementId);
+
+    this.navigationLayer[index] = navlayer;
+    $(this.sceneElm).append('<transform><inline id="'+elementId+'"></inline></transform>');
 };
 
 Gis3DWidget.prototype.showLayerWidget = function() {
@@ -162,6 +179,33 @@ Gis3DWidget.prototype.showLayerWidget = function() {
     }
 };
 
+Gis3DWidget.prototype.showNavigationLayerWidget = function() {
+    if(!this.navLayerWidgetElm) {
+        $(this.gis3dElm).prepend('<div class="gis3d_navLayer_widget ui-widget-header ui-corner-all"></div>');
+        this.navLayerWidgetElm = $(this.gis3dElm).find(".gis3d_navLayer_widget").get(0);
+
+        //var navToolbar = $("#toolbar_widget").get();
+        //$(navToolbar).append('<div class="gis3d_navLayer_widget"></div>');
+        //this.navLayerWidgetElm = $(navToolbar).find(".gis3d_navLayer_widget").get(0);
+    }
+
+    if(this.navLayerWidgetElm) {
+        // remove all children
+        $(this.navLayerWidgetElm).empty();
+        // add children
+        for(var ind=0; ind<this.navigationLayer.length; ind++) {
+            var navigationLayer = this.navigationLayer[ind];
+            var id = navigationLayer.getNavId();
+
+            // TODO: it has to be checked whether the layer is currently visible or not!
+            $(this.navLayerWidgetElm).append('<input type="button" name="nav_mode" value="'+navigationLayer.getNavName()+'" onclick=setNavigationMode("'+id+'")>');
+        }
+
+        //$(this.layerWidgetElm).find("input").button();
+
+        $(this.navLayerWidgetElm).show();
+    }
+};
 
 /**
  * Class Gis3DLayer
@@ -188,6 +232,26 @@ Gis3DLayer.prototype.getUri = function() {
     return this.uri;
 }
 
+/**
+ * Class Gis3DNavigationLayer
+ * @param name
+ * @param id
+ * @constructor
+ * @setNavigationMode()
+ */
+
+function Gis3DNavLayer(name, id) {
+    this.id = id;
+    this.name = name;
+}
+
+Gis3DNavLayer.prototype.getNavId = function(){
+    return this.id;
+}
+
+Gis3DNavLayer.prototype.getNavName = function(){
+    return this.name;
+}
 
 $(document).ready(function () {
     jGis.init();
@@ -196,6 +260,12 @@ $(document).ready(function () {
 function log(message) {
     if (window.console) {
         console.log(message);
+    }
+}
+function setNavigationMode(navigationMode) {
+    if(jGis.getGis3DWidget) {
+        // set the navigation mode on the first gis3d canvas!
+        jGis.getGis3DWidget().setNavigationMode(navigationMode);
     }
 }
 

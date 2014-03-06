@@ -17,7 +17,13 @@ a {
     overflow: hidden;
     border: 10px solid #ffffff;
 }
-
+#toggleToolbarWidget {
+    border: 10px solid #ffffff;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 10px;
+    left : 0px;
+}
 .gis3d_toolbar_widget {
     padding: 4px;
     margin-bottom: 10px;

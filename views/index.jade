@@ -18,20 +18,19 @@ html
                     jGis.getGis3DWidget().addLayer("Flavisch 3", "/x3d/Palatin_Phase05_Flavisch3.x3d");
                     jGis.getGis3DWidget().addLayer("Phase 7", "/x3d/Palatin_Phase07_Anfang2Jh.x3d");
                     jGis.getGis3DWidget().showLayerWidget();
-
-                    jGis.getGis3DWidget().addNavigationLayer("Show All", "showAll");
-                    jGis.getGis3DWidget().addNavigationLayer("Examine", "examine");
-                    jGis.getGis3DWidget().addNavigationLayer("Fly", "fly");
-                    jGis.getGis3DWidget().addNavigationLayer("Game", "game");
-                    jGis.getGis3DWidget().addNavigationLayer("Helicopter", "helicopter");
-                    jGis.getGis3DWidget().addNavigationLayer("LookAt", "lookAt");
-                    jGis.getGis3DWidget().addNavigationLayer("LookAround", "lookAround");
-                    jGis.getGis3DWidget().addNavigationLayer("Walk", "walk");
-                    jGis.getGis3DWidget().showNavigationLayerWidget();
+                    jGis.getGis3DWidget().showToolbarWidget();
                 }
             }
 
     body
     block content
         h1 Welcome to #{title}
+        label Canvas Width
+        <input type = "text" id="CanvasWidth"/>
+        br
+        label Canvas Height
+        <input type = "text" id="CanvasHeight"/>
+        br
+        <input type = "button" value="Set Values" onclick="setCanvasSize()" id="setValues"/>
+        <input type = "button" value="Set Defalut Size" onclick="setDefaultCanvasSize()" id="setDefault"/>
         gis3d

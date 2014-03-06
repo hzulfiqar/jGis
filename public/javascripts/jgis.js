@@ -41,7 +41,7 @@ var jGis = {
         if(gis3dElms && gis3dElms.length > 0) {
             for(var i=0; i<gis3dElms.length; i++) {
                 var gis3dElm = gis3dElms[i];
-                gis3dElm.innerHTML = '<x3d width="800px" height="600px"><scene></scene></x3d>';
+                gis3dElm.innerHTML = '<x3d id="x3dElement"><scene></scene></x3d>';
 
                 var x3dElm = $(gis3dElm).find("x3d").get(0);
                 var sceneElem = $(gis3dElm).find("x3d > scene").get(0);
@@ -99,7 +99,7 @@ function Gis3DWidget (id, gis3dElm, x3dElm, sceneElm) {
     this.sceneElm = sceneElm;
 
     this.layerWidgetElm = null;
-    this.navLayerWidgetElm = null;
+    this.toolbarWidgetElm = null;
 
     this.layers =  new Array();
     this.navigationLayer = new Array();
@@ -111,14 +111,13 @@ Gis3DWidget.prototype.getX3DElm = function() {
 
 Gis3DWidget.prototype.setNavigationMode = function(navigationMode) {
     switch(navigationMode){
-        case "showAll" :   this.showAll(); break;
-        case "examine" :   this.x3dElem.runtime.examine(); break;
-        case "walk" :      this.x3dElem.runtime.walk(); break;
-        case "lookAt" :    this.x3dElem.runtime.lookAt(); break;
-        case "fly" :       this.x3dElem.runtime.fly(); break;
-        case "helicopter": this.x3dElem.runtime.helicopter(); break;
-        case "game" :      this.x3dElem.runtime.game(); break;
-        case "lookAround": this.x3dElem.runtime.lookAround(); break;
+        case "Examine" :   this.x3dElem.runtime.examine(); break;
+        case "Walk" :      this.x3dElem.runtime.walk(); break;
+        case "LookAt" :    this.x3dElem.runtime.lookAt(); break;
+        case "Fly" :       this.x3dElem.runtime.fly(); break;
+        case "Helicopter": this.x3dElem.runtime.helicopter(); break;
+        case "Game" :      this.x3dElem.runtime.game(); break;
+        case "LookAround": this.x3dElem.runtime.lookAround(); break;
     }
 };
 
@@ -173,37 +172,24 @@ Gis3DWidget.prototype.showLayerWidget = function() {
             $(this.layerWidgetElm).append('<br><input type="checkbox" id="'+id+'" checked="checked"><label for="'+id+'">'+layer.getName()+'</label>');
         }
 
-        //$(this.layerWidgetElm).find("input").button();
-
         $(this.layerWidgetElm).show();
     }
 };
 
-Gis3DWidget.prototype.showNavigationLayerWidget = function() {
-    if(!this.navLayerWidgetElm) {
-        $(this.gis3dElm).prepend('<div class="gis3d_navLayer_widget ui-widget-header ui-corner-all"></div>');
-        this.navLayerWidgetElm = $(this.gis3dElm).find(".gis3d_navLayer_widget").get(0);
-
-        //var navToolbar = $("#toolbar_widget").get();
-        //$(navToolbar).append('<div class="gis3d_navLayer_widget"></div>');
-        //this.navLayerWidgetElm = $(navToolbar).find(".gis3d_navLayer_widget").get(0);
+Gis3DWidget.prototype.showToolbarWidget = function() {
+    this.toolbarNavigationModes = new Array("Examine","Fly","Game","Helicopter","LookAt","LookAround", "Walk");
+    if(!this.toolbarWidgetElm) {
+        $(this.gis3dElm).prepend('<div class="gis3d_toolbar_widget ui-widget-header ui-corner-all"></div>');
+        this.toolbarWidgetElm = $(this.gis3dElm).find(".gis3d_toolbar_widget").get(0);
     }
-
-    if(this.navLayerWidgetElm) {
-        // remove all children
-        $(this.navLayerWidgetElm).empty();
-        // add children
-        for(var ind=0; ind<this.navigationLayer.length; ind++) {
-            var navigationLayer = this.navigationLayer[ind];
-            var id = navigationLayer.getNavId();
-
-            // TODO: it has to be checked whether the layer is currently visible or not!
-            $(this.navLayerWidgetElm).append('<input type="button" name="nav_mode" value="'+navigationLayer.getNavName()+'" onclick=setNavigationMode("'+id+'")>');
+    if(this.toolbarWidgetElm) {
+        $(this.toolbarWidgetElm).empty();
+        // adding showAll button at start of navigation toolbar widget
+        $(this.toolbarWidgetElm).append('<input type="button" name="nav_mode" value="Show All" onclick=showAll()>');
+        for(var ind=0; ind < this.toolbarNavigationModes.length; ind++) {
+            $(this.toolbarWidgetElm).append('<input type="button" name="nav_mode" value="'+this.toolbarNavigationModes[ind]+'" onclick=setNavigationMode("'+this.toolbarNavigationModes[ind]+'")>');
         }
-
-        //$(this.layerWidgetElm).find("input").button();
-
-        $(this.navLayerWidgetElm).show();
+        $(this.toolbarWidgetElm).show();
     }
 };
 
@@ -232,29 +218,11 @@ Gis3DLayer.prototype.getUri = function() {
     return this.uri;
 }
 
-/**
- * Class Gis3DNavigationLayer
- * @param name
- * @param id
- * @constructor
- * @setNavigationMode()
- */
-
-function Gis3DNavLayer(name, id) {
-    this.id = id;
-    this.name = name;
-}
-
-Gis3DNavLayer.prototype.getNavId = function(){
-    return this.id;
-}
-
-Gis3DNavLayer.prototype.getNavName = function(){
-    return this.name;
-}
-
 $(document).ready(function () {
     jGis.init();
+    //Setting the default size of canvas and making it resizable
+    $("#x3dElement").resizable();
+    $("#x3dElement").width(1024).height(768);
 });
 
 function log(message) {
@@ -262,11 +230,33 @@ function log(message) {
         console.log(message);
     }
 }
+
+//Closure function
 function setNavigationMode(navigationMode) {
+    var navigation = navigationMode;
     if(jGis.getGis3DWidget) {
+        function setToolbarNavigation(navigation){
         // set the navigation mode on the first gis3d canvas!
-        jGis.getGis3DWidget().setNavigationMode(navigationMode);
+        jGis.getGis3DWidget().setNavigationMode(navigation);
+        }
     }
+    setToolbarNavigation(navigationMode);
+}
+
+function showAll() {
+    if(jGis.getGis3DWidget) {
+        // set the default view option on gis3d canvas!
+        jGis.getGis3DWidget().showAll();
+    }
+}
+
+function setCanvasSize(){
+    var canvasWidth = $("#CanvasWidth").val();
+    var canvasHeight = $("#CanvasHeight").val();
+    $("#x3dElement").width(canvasWidth).height(canvasHeight);
+}
+function setDefaultCanvasSize(){
+    $("#x3dElement").width(1024).height(768);
 }
 
 X3DOM_SECURITY_OFF = true;

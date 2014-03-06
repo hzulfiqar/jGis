@@ -9,7 +9,7 @@ a {
 
 .gis3d_widget {
     float: left;
-    width: 1000px;
+    width: 100%;
     margin: 10px;
 }
 
@@ -18,7 +18,7 @@ a {
     border: 10px solid #ffffff;
 }
 
-.gis3d_navLayer_widget {
+.gis3d_toolbar_widget {
     padding: 4px;
     margin-bottom: 10px;
     float: left;

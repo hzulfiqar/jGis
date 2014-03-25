@@ -42,7 +42,8 @@ var jGis = {
             for(var i=0; i<gis3dElms.length; i++) {
                 var gis3dElm = gis3dElms[i];
                 gis3dElm.innerHTML = '<x3d id="x3dElement"><scene></scene></x3d>';
-
+                $(gis3dElm).prepend('<input type  ="button" id = "btnLayer" name ="radio" value="HideLayerWidget" onclick="toggleLayerWidget()    ">');
+                $(gis3dElm).prepend('<input type ="button" id ="btnNavigation" name="radio" value="HideToolbarWidget" onclick="toggleToolbarWidget()">');
                 var x3dElm = $(gis3dElm).find("x3d").get(0);
                 var sceneElem = $(gis3dElm).find("x3d > scene").get(0);
                 var id = "gis3d_widget_" + i;
@@ -138,7 +139,6 @@ Gis3DWidget.prototype.addLayer = function(name, uri) {
     var index = this.layers.length;
     var id = this.id + '_layer_' + index;
     var layer = new Gis3DLayer(id, name, uri);
-
     this.layers[index] = layer;
     $(this.sceneElm).append('<transform><inline id="'+id+'" url="'+uri+'"></inline></transform>');
 };
@@ -167,13 +167,33 @@ Gis3DWidget.prototype.showLayerWidget = function() {
         for(var ind=0; ind<this.layers.length; ind++) {
             var layer = this.layers[ind];
             var id = 'layer_checkbox_'+layer.getId();
-
             // TODO: it has to be checked whether the layer is currently visible or not!
-            $(this.layerWidgetElm).append('<br><input type="checkbox" id="'+id+'" checked="checked"><label for="'+id+'">'+layer.getName()+'</label>');
+          $(this.layerWidgetElm).append('<br><input type="checkbox"  checked="checked" id="'+id+'" onchange=showOrHideLayer(this)><label for="'+id+'">'+layer.getName()+'</label>');
         }
-
-        $(this.layerWidgetElm).show();
+       $(this.layerWidgetElm).show();
     }
+};
+
+function showOrHideLayer(layerWidget) {
+    jGis.getGis3DWidget().checkLayerVisibility(layerWidget);
+}
+//  Shows or hides layer based on the status of the checkbox
+Gis3DWidget.prototype.checkLayerVisibility = function (layerWidget) {
+
+       var layerWidgetId = layerWidget.id;
+    // extracts layer Id from layerWidget Id
+       var layerId = layerWidgetId.slice(15);
+       var layerWidgetElement = document.getElementById(layerWidgetId);
+       var layerElement = document.getElementById(layerId);
+       if (layerWidgetElement.checked) {
+           layerElement.render = "true";
+           layerElement.load = "true";
+       }
+       else {
+           layerElement.render = "false";
+           layerElement.load = "false";
+       }
+
 };
 
 Gis3DWidget.prototype.showToolbarWidget = function() {
@@ -192,6 +212,48 @@ Gis3DWidget.prototype.showToolbarWidget = function() {
         $(this.toolbarWidgetElm).show();
     }
 };
+
+function toggleToolbarWidget() {
+      if(jGis.getGis3DWidget) {
+        // set the navigation mode on the first gis3d canvas!
+        var navState = $('.toolbar_widget, .ui-widget-header, .ui-corner-all').css('display');
+        //Nav widget is already visible
+        if(navState == "block")
+        {
+            $('#btnNavigation').val('ShowToolbarWidget'); //changing the text of the button
+            jGis.getGis3DWidget().hideToolbarWidget();//hide nav widget
+
+        }
+        else //if navState == "none" Nav widget is not visible
+        {
+            $('#btnNavigation').val('HideToolbarWidget'); //changing the text of the button
+            jGis.getGis3DWidget().showToolbarWidget();//show nav widget
+        }
+
+    }
+}
+
+
+function toggleLayerWidget() {
+    if(jGis.getGis3DWidget) {
+        // set the navigation mode on the first gis3d canvas!
+        var navState = $('.gis3d_layer_widget').css('display');
+        //Nav widget is already visible
+        if(navState == "block")
+        {
+            $('#btnLayer').val('ShowLayerWidget'); //changing the text of the button
+            jGis.getGis3DWidget().hideLayerWidget();//hide nav widget
+
+        }
+        else //if navState == "none" Nav widget is not visible
+        {
+            $('#btnLayer').val('HideLayerWidget'); //changing the text of the button
+            jGis.getGis3DWidget().showLayerWidget();//show nav widget
+        }
+
+    }
+}
+
 
 /**
  * Class Gis3DLayer
@@ -241,6 +303,14 @@ function setNavigationMode(navigationMode) {
         }
     }
     setToolbarNavigation(navigationMode);
+}
+
+Gis3DWidget.prototype.hideLayerWidget = function() {
+     $(this.layerWidgetElm).hide();
+}
+
+Gis3DWidget.prototype.hideToolbarWidget = function() {
+     $(this.toolbarWidgetElm).hide();
 }
 
 function showAll() {

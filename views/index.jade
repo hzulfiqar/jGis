@@ -5,10 +5,10 @@ html
         script(type='text/javascript', src='/javascripts/jquery-1.11.0.js')
         script(type='text/javascript', src="//code.jquery.com/ui/1.10.4/jquery-ui.js")
         link(rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css")
-        link(rel="stylesheet" href="/stylesheets/jgis.css")
-        script(type='text/javascript', src='/javascripts/jgis.js')
+        link(rel="stylesheet" href="/stylesheets/gis3dom.css")
+        script(type='text/javascript', src='/javascripts/gis3dom.js')
         script.
-            // TODO: SB find a better way of listening to readiness of jGis...
+            // TODO: SB find a better way of listening to readiness of gis3dom...
             jGis.ready = function() {
                 if(jGis.getGis3DWidget()) {
                     jGis.getGis3DWidget().addLayer("Gelände", "/x3d/Palatin_Gelaende.x3d");

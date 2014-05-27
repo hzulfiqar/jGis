@@ -3,10 +3,16 @@
   "version": "0.0.1",
   "private": false,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "prepublish": "gulp"
   },
   "dependencies": {
     "express": "3.4.8",
     "jade": "*"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-uglify": "*"
   }
 }

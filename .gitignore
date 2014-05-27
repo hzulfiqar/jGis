@@ -23,3 +23,8 @@ node_modules
 
 # for initial development, do not fix components
 bower_components/
+
+# and don't put dists into public
+/public/javascripts/gis3dom.js
+/public/javascripts/gis3dom.min.js
+/dist/

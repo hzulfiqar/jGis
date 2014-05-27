@@ -1,0 +1,10 @@
+GIS3DOM
+
+Apply 3D GIS functionality in X3DOM
+
+Dual-licensed under MIT and GPL v3.
+
+
+build: npm run-script prepublish
+
+run: npm start

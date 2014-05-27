@@ -4,6 +4,9 @@ Apply 3D GIS functionality in X3DOM
 
 Dual-licensed under MIT and GPL v3.
 
+Builds and test-runs on node.js.
+
+prepare: npm install && bower install
 
 build: npm run-script prepublish
 

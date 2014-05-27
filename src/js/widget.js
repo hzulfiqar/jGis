@@ -25,7 +25,7 @@ function Gis3DWidget (id, gis3dElm, x3dElm, sceneElm) {
     this.layerWidgetElm = null;
     this.toolbarWidgetElm = null;
 
-    this.layers =  new Array();
+    this.layers = [];
 }
 
 Gis3DWidget.prototype.getX3DElm = function() {

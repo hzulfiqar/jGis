@@ -12,7 +12,7 @@
  * @type {{}}
  */
 var jGis = {
-    gis3DWidgets: new Array(),
+    gis3DWidgets: [],
 
     bootstrap: function(x3domjs, x3domcss) {
         log('Going to load x3dom libs..');

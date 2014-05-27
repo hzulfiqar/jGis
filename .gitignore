@@ -19,3 +19,6 @@ build
 .grunt
 
 node_modules
+
+# for initial development, do not fix components
+bower_components/

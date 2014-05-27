@@ -1,0 +1,34 @@
+{
+  "name": "gis3dom",
+  "version": "0.0.1",
+  "homepage": "https://github.com/igd-geo/jGis",
+  "authors": [
+    "Simon Thum <simon.thum@igd.fraunhofer.de>"
+  ],
+  "description": "a web component library to support 3D GIS in X3DOM",
+  "main": "dist/gis3dom.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "3D",
+    "GIS",
+    "x3d",
+    "x3dom",
+    "widget"
+  ],
+  "license": "MIT and GPL Dual-Licensed",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1"
+  },
+  "devDependencies": {
+    "gulp": "*"
+  }
+}

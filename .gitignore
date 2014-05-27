@@ -1,6 +1,7 @@
 # IDE droppings
 .idea/
 .project/
+nbproject/
 
 lib-cov
 lcov.info

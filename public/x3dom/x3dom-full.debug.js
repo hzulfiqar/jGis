@@ -45669,4 +45669,3 @@ x3dom.versionInfo = {
     revision: 'bd0c4fe7954094877b20444b729f04aaf3a466a5',
     date:     'Thu Sep 12 15:22:34 2013 +0200'
 };
-

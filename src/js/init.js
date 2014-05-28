@@ -7,7 +7,7 @@
 // 
 
 $(document).ready(function () {
-    jGis.init();
+    gis3dom.init();
     //Setting the default size of canvas and making it resizable
     $("#x3dElement").resizable();
     $("#x3dElement").width(1024).height(768);
@@ -31,7 +31,7 @@ $(function(){
     $('#CanvasHeight , #CanvasWidth').keypress(function(event){
         if(event.keyCode === 13){
             $('#setValues').click();
-            jGis.getGis3DWidget().setCanvasSize();
+            gis3dom.getGis3DWidget().setCanvasSize();
         }
     });
 });

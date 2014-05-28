@@ -1,13 +1,14 @@
 GIS3DOM
 
-Apply 3D GIS functionality in X3DOM
+A JavaScript library for web based 3D Geographic Information Systems
 
-Dual-licensed under MIT and GPL v3.
+Dual-licensed under MIT and GPL.
 
 Builds and test-runs on node.js.
 
 prepare: npm install && bower install
 
 build: npm run-script prepublish
+or invoke gulp
 
-run: npm start
+run example: npm start

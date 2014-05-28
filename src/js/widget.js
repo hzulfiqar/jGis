@@ -77,13 +77,13 @@ Gis3DWidget.prototype.showLayerWidget = function() {
             var layer = this.layers[ind];
             var id = 'layer_checkbox_'+layer.getId();
             // TODO: it has to be checked whether the layer is currently visible or not!
-          $(this.layerWidgetElm).append('<br><input type="checkbox"  checked="checked" id="'+id+'" onchange=jGis.getGis3DWidget().showOrHideLayer(this)><label for="'+id+'">'+layer.getName()+'</label>');
+          $(this.layerWidgetElm).append('<br><input type="checkbox"  checked="checked" id="'+id+'" onchange=gis3dom.getGis3DWidget().showOrHideLayer(this)><label for="'+id+'">'+layer.getName()+'</label>');
         }
        $(this.layerWidgetElm).show();
     }
 };
 Gis3DWidget.prototype.showOrHideLayer = function(layerWidget) {
-    jGis.getGis3DWidget().checkLayerVisibility(layerWidget);
+    gis3dom.getGis3DWidget().checkLayerVisibility(layerWidget);
 };
 //  Shows or hides layer based on the status of the checkbox
 Gis3DWidget.prototype.checkLayerVisibility = function (layerWidget) {
@@ -115,9 +115,9 @@ Gis3DWidget.prototype.showToolbarWidget = function() {
 
     if(this.toolbarWidgetElm) {
         $(this.toolbarWidgetElm).empty();
-        $(this.toolbarWidgetElm).append('<input type="button" name="nav_mode" value="Show All" onclick=jGis.getGis3DWidget().showAll()>');
+        $(this.toolbarWidgetElm).append('<input type="button" name="nav_mode" value="Show All" onclick=gis3dom.getGis3DWidget().showAll()>');
         for(var ind=0; ind < this.toolbarNavigationModes.length; ind++) {
-            $(this.toolbarWidgetElm).append('<input type="button" name="nav_mode" value="'+this.toolbarNavigationModes[ind]+'" onclick= jGis.getGis3DWidget().setNavigationMode("'+this.toolbarNavigationModes[ind]+'")>');
+            $(this.toolbarWidgetElm).append('<input type="button" name="nav_mode" value="'+this.toolbarNavigationModes[ind]+'" onclick= gis3dom.getGis3DWidget().setNavigationMode("'+this.toolbarNavigationModes[ind]+'")>');
         }
         $(this.toolbarWidgetElm).append('<input type  ="button" id = "btnLayer" name ="radio" value="HideLayerWidget" onclick="toggleLayerWidget()    ">');
 

@@ -15,4 +15,4 @@
 X3DOM_SECURITY_OFF = true;
 var x3domjs = '/x3dom/x3dom-full.debug.js';
 var x3domcss = '/x3dom/x3dom.css';
-jGis.bootstrap(x3domjs, x3domcss);
+gis3dom.bootstrap(x3domjs, x3domcss);

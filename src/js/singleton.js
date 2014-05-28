@@ -8,10 +8,10 @@
 
 
 /**
- * The jGis singleton..
+ * The gis3dom singleton..
  * @type {{}}
  */
-var jGis = {
+var gis3dom = {
     gis3DWidgets: [],
 
     bootstrap: function(x3domjs, x3domcss) {
@@ -43,7 +43,7 @@ var jGis = {
     },
 
     ready: function() {
-        log('jGis is ready...');
+        log('gis3dom is ready...');
     },
 
     addGis3DWidget: function(gis3DWidget) {

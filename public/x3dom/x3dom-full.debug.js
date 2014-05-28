@@ -45740,7 +45740,7 @@ Gis3DWidget.prototype.showLayerWidget = function(){
         for(var ind=0; ind<this.layers.length; ind++) {
             var layer = this.layers[ind];
             var id = 'layer_checkbox_'+layer.getId();
-            $(this.layerWidgetElm).append('<br><input type="checkbox"  checked="checked" id="'+id+'" onchange=x3dGis.getGis3DWidget().showOrHideLayer(this)><label for="'+id+'">'+layer.getName()+'</label>');
+            $(this.layerWidgetElm).append('<br><input type="checkbox"  checked="checked" id="'+id+'" onchange=x3dGis.getGis3DWidget().showOrHideLayer(this.id,this.checked)><label for="'+id+'">'+layer.getName()+'</label>');
         }
         $(this.layerWidgetElm).show();
     }
@@ -45763,19 +45763,14 @@ Gis3DWidget.prototype.showAll = function() {
     this.x3dElem.runtime.resetView();
 };
 
-Gis3DWidget.prototype.showOrHideLayer = function(layerWidget) {
-    x3dGis.getGis3DWidget().checkLayerVisibility(layerWidget);
-}
-
 //  Shows or hides layer based on the status of the checkbox
-Gis3DWidget.prototype.checkLayerVisibility = function (layerWidget) {
+Gis3DWidget.prototype.showOrHideLayer = function (layerWidgetId, isChecked) {
 
-    var layerWidgetId = layerWidget.id;
     // extracts layer Id from layerWidget Id
     var layerId = layerWidgetId.slice(15);
     var layerWidgetElement = document.getElementById(layerWidgetId);
     var layerElement = document.getElementById(layerId);
-    if (layerWidgetElement.checked) {
+    if (isChecked) {
         layerElement.render = "true";
         layerElement.load = "true";
     }

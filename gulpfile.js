@@ -14,7 +14,7 @@ var paths = {
                    'src/js/*.js']
 };
 
-gulp.task('javascript-min', function() {
+gulp.task('javascript-min', ['lintjs'], function() {
   // Minify and copy all JavaScript (except vendor scripts)
   return gulp.src(paths.source_scripts)
     .pipe(concat('gis3dom.min.js'))
@@ -23,7 +23,7 @@ gulp.task('javascript-min', function() {
     .pipe(gulp.dest('public/javascripts'));
 });
 
-gulp.task('javascript', function() {
+gulp.task('javascript', ['lintjs'], function() {
   // Minify and copy all JavaScript (except vendor scripts)
   return gulp.src(paths.source_scripts)
     .pipe(concat('gis3dom.js'))
@@ -56,11 +56,10 @@ gulp.task('lintjs', function() {
         "browser":true,
         "jquery":true
     }))
-    .pipe(jshint.reporter(jshintStylish));
-    // TODO append when silent
-    // .pipe(jshint.reporter('fail'))
+    .pipe(jshint.reporter(jshintStylish))
+    .pipe(jshint.reporter('fail'));
 });
 
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['lintjs', 'javascript', 'javascript-min']);
+gulp.task('default', ['javascript', 'javascript-min']);

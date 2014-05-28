@@ -129,47 +129,6 @@ Gis3DWidget.prototype.showToolbarButton = function() {
     $(this.gis3dElm).after('<input type ="button" id ="toggleToolbarWidget" name="radio" value="HideToolbarWidget" onclick="toggleToolbarWidget()">');
 };
 
-function toggleToolbarWidget() {
-      if(jGis.getGis3DWidget) {
-        // set the navigation mode on the first gis3d canvas!
-        var navState = $('.toolbar_widget, .ui-widget-header, .ui-corner-all').css('display');
-        //Nav widget is already visible
-        if(navState == "block")
-        {
-            $('#toggleToolbarWidget').val('ShowToolbarWidget'); //changing the text of the button
-            jGis.getGis3DWidget().hideToolbarWidget();//hide nav widget
-
-        }
-        else //if navState == "none" Nav widget is not visible
-        {
-            $('#toggleToolbarWidget').val('HideToolbarWidget'); //changing the text of the button
-            jGis.getGis3DWidget().showToolbarWidget();//show nav widget
-        }
-
-    }
-}
-
-
-function toggleLayerWidget() {
-    if(jGis.getGis3DWidget) {
-        // set the navigation mode on the first gis3d canvas!
-        var navState = $('.gis3d_layer_widget').css('display');
-        //Nav widget is already visible
-        if(navState == "block")
-        {
-            $('#btnLayer').val('ShowLayerWidget'); //changing the text of the button
-            jGis.getGis3DWidget().hideLayerWidget();//hide nav widget
-
-        }
-        else //if navState == "none" Nav widget is not visible
-        {
-            $('#btnLayer').val('HideLayerWidget'); //changing the text of the button
-            jGis.getGis3DWidget().showLayerWidget();//show nav widget
-        }
-
-    }
-}
-
 Gis3DWidget.prototype.hideLayerWidget = function() {
      $(this.layerWidgetElm).hide();
 };
@@ -179,17 +138,19 @@ Gis3DWidget.prototype.hideToolbarWidget = function() {
 };
 
 Gis3DWidget.prototype.setCanvasSize = function(){
+    // How not to do it.
+    /*
     var canvasWidth = $("#CanvasWidth").val();
     var canvasHeight = $("#CanvasHeight").val();
     if(canvasWidth && canvasHeight !== null){
         $("#x3dElement").width(canvasWidth).height(canvasHeight);
     }else{
         alert('Enter both height and width');
-    }
+    }*/
 };
 
 Gis3DWidget.prototype.setDefaultCanvasSize = function(){
-    $("#x3dElement").width(1024).height(768);
+    /*$("#x3dElement").width(1024).height(768);
     $("#CanvasWidth").val(1024);
-    $("#CanvasHeight").val(768);
+    $("#CanvasHeight").val(768);*/
 };

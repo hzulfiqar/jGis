@@ -22,14 +22,14 @@ $(document).ready(function () {
 });
 
 $(function(){
-    $("#x3dElement").mouseup(function(event){
+    $("#x3dElement").mouseup(function(){
         ($('#x3dom-x3dElement-canvas').width($("#x3dElement").width()).height($("#x3dElement").height()));
     });
 });
 
 $(function(){
     $('#CanvasHeight , #CanvasWidth').keypress(function(event){
-        if(event.keyCode == 13){
+        if(event.keyCode === 13){
             $('#setValues').click();
             jGis.getGis3DWidget().setCanvasSize();
         }
@@ -38,7 +38,7 @@ $(function(){
 
 function log(message) {
     if (window.console) {
-        console.log(message);
+        window.console.log(message);
     }
 }
 

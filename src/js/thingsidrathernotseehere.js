@@ -8,6 +8,10 @@
 
 // TODO this is stuff that I would really not like to see at all
 
+// inform jshint about x3dom global
+// TODO why is this X3DOM_SECURITY_OFF here anyway? Seems to work fine without prob.
+/* global X3DOM_SECURITY_OFF:true */
+
 X3DOM_SECURITY_OFF = true;
 var x3domjs = '/x3dom/x3dom-full.debug.js';
 var x3domcss = '/x3dom/x3dom.css';

@@ -1,0 +1,14 @@
+GIS3DOM
+
+A JavaScript library for web based 3D Geographic Information Systems
+
+Dual-licensed under MIT and GPL.
+
+Builds and test-runs on node.js.
+
+prepare: npm install && bower install
+
+build: npm run-script prepublish
+or invoke gulp
+
+run example: npm start

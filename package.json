@@ -1,12 +1,21 @@
 {
-  "name": "application-name",
+  "name": "gis3dom",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "prepublish": "gulp"
   },
   "dependencies": {
     "express": "3.4.8",
     "jade": "*"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-using": "*",
+    "gulp-uglify": "*",
+    "gulp-jshint": "^1.6.1",
+    "jshint-stylish": "^0.2.0"
   }
 }

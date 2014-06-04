@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'jGis' });
+  res.render('index', { title: 'GIS3DOM' });
 };

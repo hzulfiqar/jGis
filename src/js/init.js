@@ -21,11 +21,11 @@ $(document).ready(function () {
     });
 });
 
-$(function(){
+/*$(function(){
     $("#x3dElement").mouseup(function(){
         ($('#x3dom-x3dElement-canvas').width($("#x3dElement").width()).height($("#x3dElement").height()));
     });
-});
+});*/
 
 $(function(){
     $('#CanvasHeight , #CanvasWidth').keypress(function(event){
@@ -41,4 +41,3 @@ function log(message) {
         window.console.log(message);
     }
 }
-

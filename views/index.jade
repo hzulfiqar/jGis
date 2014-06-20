@@ -30,6 +30,6 @@
         <input type = "text" id="CanvasWidth"/>
         label Canvas Height
         <input type = "text" id="CanvasHeight"/>
-        <input type = "button" value="Set Size" onclick="gis3dom.getGis3DWidget().setCanvasSize()" id="setValues"/>
+        <input type = "button" value="Set Size" onclick="gis3dom.getGis3DWidget().setCanvasSize(document.getElementById('CanvasWidth').value, document.getElementById('CanvasHeight').value)" id="setValues"/>
         <input type = "button" value="Set Defalut Size" onclick="gis3dom.getGis3DWidget().setDefaultCanvasSize()" id="setDefault"/>
         gis3d

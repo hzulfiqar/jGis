@@ -63,7 +63,7 @@ Gis3DWidget.prototype.addLayer = function(name, uri) {
 
 Gis3DWidget.prototype.showLayerWidget = function() {
     if(!this.layerWidgetElm) {
-        $(this.gis3dElm).append('<div id="gis3dLayerWidget" class="gis3d_layer_widget"></div>');
+        $(this.gis3dElm).append('<div class="gis3d_layer_widget"></div>');
         this.layerWidgetElm = $(this.gis3dElm).find(".gis3d_layer_widget").get(0);
     }
 
@@ -72,28 +72,23 @@ Gis3DWidget.prototype.showLayerWidget = function() {
         $(this.layerWidgetElm).empty();
         // add children
         $(this.layerWidgetElm).append('Layers: ');
-        $(this.layerWidgetElm).append('<input type="button" value="x" name="x" onclick=toggleLayerWidget()>');
+        //$(this.layerWidgetElm).append('<input type="button" value="x" name="x" onclick=toggleLayerWidget()>');
         for(var ind=0; ind<this.layers.length; ind++) {
             var layer = this.layers[ind];
             var id = 'layer_checkbox_'+layer.getId();
             // TODO: it has to be checked whether the layer is currently visible or not!
-          $(this.layerWidgetElm).append('<br><input type="checkbox"  checked="checked" id="'+id+'" onchange=gis3dom.getGis3DWidget().showOrHideLayer(this)><label for="'+id+'">'+layer.getName()+'</label>');
+          $(this.layerWidgetElm).append('<br><input type="checkbox"  checked="checked" id="'+id+'" onchange=gis3dom.getGis3DWidget().showOrHideLayer(this.id,this.checked)><label for="'+id+'">'+layer.getName()+'</label>');
         }
        $(this.layerWidgetElm).show();
     }
 };
-Gis3DWidget.prototype.showOrHideLayer = function(layerWidget) {
-    gis3dom.getGis3DWidget().checkLayerVisibility(layerWidget);
-};
-//  Shows or hides layer based on the status of the checkbox
-Gis3DWidget.prototype.checkLayerVisibility = function (layerWidget) {
 
-       var layerWidgetId = layerWidget.id;
+//  Shows or hides layer based on the status of the checkbox
+Gis3DWidget.prototype.showOrHideLayer = function (layerWidgetId, isChecked) {
     // extracts layer Id from layerWidget Id
        var layerId = layerWidgetId.slice(15);
-       var layerWidgetElement = document.getElementById(layerWidgetId);
        var layerElement = document.getElementById(layerId);
-          if (layerWidgetElement.checked) {
+          if (isChecked) {
            layerElement.render = "true";
            layerElement.load = "true";
        }
@@ -101,15 +96,13 @@ Gis3DWidget.prototype.checkLayerVisibility = function (layerWidget) {
            layerElement.render = "false";
            layerElement.load = "false";
        }
-
     };
-
 
 Gis3DWidget.prototype.showToolbarWidget = function() {
     this.toolbarNavigationModes = new Array("Examine","Fly","Game","Helicopter","LookAt","LookAround", "Walk");
 
     if(!this.toolbarWidgetElm) {
-        $(this.gis3dElm).prepend('<div id="gis3dToolbarWidget" class="gis3d_toolbar_widget ui-widget-header ui-corner-all"></div>');
+        $(this.gis3dElm).prepend('<div class="gis3d_toolbar_widget ui-widget-header ui-corner-all"></div>');
         this.toolbarWidgetElm = $(this.gis3dElm).find(".gis3d_toolbar_widget").get(0);
     }
 
@@ -119,28 +112,38 @@ Gis3DWidget.prototype.showToolbarWidget = function() {
         for(var ind=0; ind < this.toolbarNavigationModes.length; ind++) {
             $(this.toolbarWidgetElm).append('<input type="button" name="nav_mode" value="'+this.toolbarNavigationModes[ind]+'" onclick= gis3dom.getGis3DWidget().setNavigationMode("'+this.toolbarNavigationModes[ind]+'")>');
         }
-        //$(this.toolbarWidgetElm).append('<input type ="button" value="HideLayerWidget" onclick="gis3dom.getGis3DWidget().toggleWidget(this)">');
         var divElement = $(this.toolbarWidgetElm).append('<input type ="button" value="HideLayerWidget">');
         var btnElement = divElement.get(0).lastChild;
-        btnElement.addEventListener("click", this.toggleWidget,false);
+        var _this = this;
+        btnElement.addEventListener("click", function(event) { gis3dom.getGis3DWidget().toggleWidget(event,_this.layerWidgetElm); },false);
    }
     $(this.toolbarWidgetElm).show();
 };
 
-Gis3DWidget.prototype.toggleWidget = function(event){
+Gis3DWidget.prototype.toggleWidget = function(event, widget){
     var targetElement = event.target ? event.target : event.srcElement;
-    $('.gis3d_layer_widget').toggle();
-    if(targetElement.value === "HideLayerWidget"){
-        targetElement.value = "ShowLayerWidget";
+    if(widget.style.display === "none"){
+        widget.style.display = "block";
+        if( targetElement.value.indexOf("Layer") >= 0){
+            targetElement.value = "HideLayerWidget";
+        }else if(targetElement.value.indexOf("Toolbar") >= 0){
+            targetElement.value = "HideToolbarWidget";
+        }
     }else{
-        targetElement.value = "HideLayerWidget";
+        widget.style.display = "none";
+        if(targetElement.value.indexOf("Layer") >= 0){
+            targetElement.value = "ShowLayerWidget";
+        }else if(targetElement.value.indexOf("Toolbar") >= 0){
+            targetElement.value = "ShowToolbarWidget";
+        }
     }
 };
 
 Gis3DWidget.prototype.showToolbarButton = function() {
-    $(this.gis3dElm).after('<input type ="button" id ="toggleToolbarWidget" name="radio" value="HideToolbarWidget">');
-    this.btnToggleToolbarWidget = document.getElementById("toggleToolbarWidget");
-    this.btnToggleToolbarWidget.addEventListener("click", function(){gis3dom.getGis3DWidget().toggleWidget("gis3dToolbarWidget");},false);
+    $(this.toolbarWidgetElm).before('<div><input type ="button" value="HideToolbarWidget"></div>');
+    var toolbarBtnElement = this.gis3dElm.firstChild.firstChild;
+    var _this = this;
+    toolbarBtnElement.addEventListener("click", function(event) { gis3dom.getGis3DWidget().toggleWidget(event,_this.toolbarWidgetElm); },false);
 };
 
 Gis3DWidget.prototype.hideLayerWidget = function() {
@@ -152,11 +155,11 @@ Gis3DWidget.prototype.hideToolbarWidget = function() {
 };
 
 Gis3DWidget.prototype.setCanvasSize = function(canvasWidth, canvasHeight){
-    $('#x3dElement').width(canvasWidth).height(canvasHeight);
+    $(this.x3dElem).width(canvasWidth).height(canvasHeight);
 };
 
-Gis3DWidget.prototype.setDefaultCanvasSize = function(){
-    $("#x3dElement").width(1024).height(768);
-    $("#CanvasWidth").val(1024);
-    $("#CanvasHeight").val(768);
+Gis3DWidget.prototype.setDefaultCanvasSize = function(textBoxWidth, textBoxHeight){
+    $(this.x3dElem).width(1024).height(768);
+    textBoxWidth.value = 1024;
+    textBoxHeight.value = 768;
 };

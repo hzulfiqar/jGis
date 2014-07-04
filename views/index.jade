@@ -1,11 +1,11 @@
-doctype html
-html
-    head
+﻿html
         title #{title}
+        script(type='text/javascript', src='/x3dom/x3dom-full.debug.js')
         script(type='text/javascript', src='/javascripts/jquery-1.11.0.js')
         script(type='text/javascript', src="//code.jquery.com/ui/1.10.4/jquery-ui.js")
         link(rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css")
         link(rel="stylesheet" href="/stylesheets/gis3dom.css")
+        link(rel="stylesheet" href="/x3dom/x3dom.css")
         script(type='text/javascript', src='/javascripts/gis3dom.js')
         script.
             // TODO: SB find a better way of listening to readiness of gis3dom...
@@ -31,5 +31,5 @@ html
         label Canvas Height
         <input type = "text" id="CanvasHeight"/>
         <input type = "button" value="Set Size" onclick="gis3dom.getGis3DWidget().setCanvasSize(document.getElementById('CanvasWidth').value, document.getElementById('CanvasHeight').value)" id="setValues"/>
-        <input type = "button" value="Set Defalut Size" onclick="gis3dom.getGis3DWidget().setDefaultCanvasSize()" id="setDefault"/>
+        <input type = "button" value="Set Defalut Size" onclick="gis3dom.getGis3DWidget().setDefaultCanvasSize(document.getElementById('CanvasWidth'), document.getElementById('CanvasHeight'))" id="setDefault"/>
         gis3d

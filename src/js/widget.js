@@ -72,7 +72,6 @@ Gis3DWidget.prototype.showLayerWidget = function() {
         $(this.layerWidgetElm).empty();
         // add children
         $(this.layerWidgetElm).append('Layers: ');
-        //$(this.layerWidgetElm).append('<input type="button" value="x" name="x" onclick=toggleLayerWidget()>');
         for(var ind=0; ind<this.layers.length; ind++) {
             var layer = this.layers[ind];
             var id = 'layer_checkbox_'+layer.getId();
@@ -159,7 +158,8 @@ Gis3DWidget.prototype.setCanvasSize = function(canvasWidth, canvasHeight){
 };
 
 Gis3DWidget.prototype.setDefaultCanvasSize = function(textBoxWidth, textBoxHeight){
-    $(this.x3dElem).width(1024).height(768);
+    this.setCanvasSize("1024", "768");
     textBoxWidth.value = 1024;
     textBoxHeight.value = 768;
 };
+

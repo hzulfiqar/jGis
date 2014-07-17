@@ -8,6 +8,7 @@
 
 $(document).ready(function () {
     gis3dom.init();
+    gis3dom.bootstrap();
     //Setting the default size of canvas and making it resizable
     $("#x3dElement").resizable();
     $("#x3dElement").width(1024).height(768);

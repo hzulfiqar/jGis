@@ -14,6 +14,16 @@
 var gis3dom = {
     gis3DWidgets: [],
 
+    bootstrap: function() {
+        log('Going to load x3dom libs..');
+
+        var jsLink = $("<script type='text/javascript' src='/x3dom/x3dom-full.debug.js'>");
+        $("head").append(jsLink);
+
+        var cssLink = $("<link rel='stylesheet' type='text/css' href='/x3dom/x3dom.css'>");
+        $("head").append(cssLink);
+    },
+
     init: function() {
         $('<div class="gis3d_widget"></div>').replaceAll("gis3d");
 

@@ -9,16 +9,11 @@
 $(document).ready(function () {
     gis3dom.init();
     gis3dom.bootstrap();
-    //Setting the default size of canvas and making it resizable
-    $("#x3dElement").resizable();
-    $("#x3dElement").width(1024).height(768);
-    $("#CanvasWidth").val($("#x3dElement").width());
-    $("#CanvasHeight").val($("#x3dElement").height());
+    gis3dom.getGis3DWidget().setCanvasSize("1024", "768");
 
-    $('#x3dElement').bind('resize', function(){
-        // Update Height and Width values when size changes
-        $("#CanvasWidth").val($("#x3dElement").width());
-        $("#CanvasHeight").val($("#x3dElement").height());
+    $(this.x3dElem).bind('resize', function(){
+        $("#CanvasWidth").val($(this.x3dElem).width());
+        $("#CanvasHeight").val($(this.x3dElem).height());
     });
 });
 
